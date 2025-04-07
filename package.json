@@ -1,0 +1,20 @@
+{
+  "name": "basic_template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Jeevan",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "http-status-codes": "^2.3.0",
+    "nodemon": "^3.1.9",
+    "winston": "^3.17.0"
+  }
+}
