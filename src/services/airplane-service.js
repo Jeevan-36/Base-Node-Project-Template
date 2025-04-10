@@ -13,4 +13,44 @@ const {StatusCodes}=require("http-status-codes")
        
     }
 }
-module.exports={createAirplane};
+
+async function getAirplane()
+{
+    try {
+        const airplaneData= await airplaneRepository.getAll();
+        return airplaneData;
+    } catch (error) {
+        throw new ApiError(StatusCodes.INTERNAL_SERVER_ERROR,"Cant get Airplane Data")
+    }
+}
+
+async function getAirplaneById(id) {
+
+    try {
+        const airplaneData= await airplaneRepository.get(id);
+        return airplaneData;
+    } catch (error) {
+        throw new ApiError(StatusCodes.NOT_FOUND, "Airplane not found");
+    }
+}
+
+async function destroyAirplane(id) {
+    try {
+        const airplaneData= await airplaneRepository.delete(id);
+        return airplaneData;
+    } catch (error) {
+        throw new ApiError(StatusCodes.NOT_FOUND, "Airplane not found");
+    }
+}
+
+async function updateAirplane(id,data) {
+    try {
+        const airplaneData= await airplaneRepository.update(id,data);
+        return airplaneData;
+    } catch (error) {
+       
+        throw new ApiError(StatusCodes.NOT_FOUND, "Airplane not found");
+    }
+}
+
+module.exports={createAirplane,getAirplane,getAirplaneById,destroyAirplane,updateAirplane};

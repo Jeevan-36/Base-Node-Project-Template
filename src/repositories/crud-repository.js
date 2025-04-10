@@ -1,5 +1,7 @@
 
-const {logger}=require('../config/logger-config.js')
+const { StatusCodes } = require('http-status-codes');
+const {logger}=require('../config/logger-config.js');
+const ApiError = require('../utils/ApiError.js');
 class crudRepository{
     constructor(model)
     {
@@ -8,57 +10,57 @@ class crudRepository{
     async create(data)
     {
         
-            const respose=await this.model.create(data);
-            return respose;
+            const response=await this.model.create(data);
+            return response;
         
     }
     async delete(data)
     {
-        try {
-            const respose=await this.model.destroy({
+        
+            const response=await this.model.destroy({
                 where:{
                     id:data
                 }
             });
-            return respose;
-        } catch (error) {
-            logger.error("something went wrong in delete function in crud repo");
-            throw error;
-        }
+            if(!response)
+                {
+                    throw new ApiError(StatusCodes.NOT_FOUND, 'Resource not found');
+                }
+            return response;
+       
     }
     async get(data)
     {
-        try {
-            const respose=await this.model.findByPk(data);
-            return respose;
-        } catch (error) {
-            logger.error("something went wrong in get function in crud repo");
-            throw error;
-        }
+       
+            const response=await this.model.findByPk(data);
+            if(!response)
+            {
+                throw new ApiError(StatusCodes.NOT_FOUND, 'Resource not found');
+            }
+            return response;
+        
     }
     async getAll(data)
     {
-        try {
-            const respose=await this.model.findAll();
-            return respose;
-        } catch (error) {
-            logger.error("something went wrong in get All function in crud repo");
-            throw error;
-        }
+        
+            const response=await this.model.findAll();
+            return response;
+        
     }
     async update(id,data)
     {
-        try {
-            const respose=await this.model.update(data,{
+       
+            const response=await this.model.update(data,{
                 where:{
                     id:id
                 }
             });
-            return respose;
-        } catch (error) {
-            logger.error("something went wrong in get function in crud repo");
-            throw error;
-        }
+            if(response[0]===0)
+                {
+                    throw new ApiError(StatusCodes.NOT_FOUND, 'Resource not found');
+                }
+            return response;
+        
     }
 
 }
