@@ -1,6 +1,7 @@
-import { Router } from "express";
-import { info } from "../../controllers/info-controller.js";
-const router=Router();
+const { Router } = require("express");
+const airplaneRoutes=require('./airplane-routes.js')
+const router = Router();
 
-router.get('/info',info)
-export default router;
+router.use('/airplanes',airplaneRoutes);
+
+module.exports = router;

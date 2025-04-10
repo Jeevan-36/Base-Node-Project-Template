@@ -1,6 +1,7 @@
-import { PORT } from "./server-config.js";
-import {logger} from './logger-config.js'
-export{
-    PORT,
-    logger
-}
+const { PORT } = require('./server-config.js');
+const { logger } = require('./logger-config.js');
+
+module.exports = {
+  PORT,
+  logger,
+};

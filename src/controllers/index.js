@@ -1,1 +1,3 @@
-import { info } from "./info-controller";
+module.exports=
+{
+    AirplaneController:require('./airplane-controller.js')}
