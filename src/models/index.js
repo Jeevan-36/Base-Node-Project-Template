@@ -42,4 +42,10 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = {Airplane:db.Airplane};
+module.exports = {
+  Airplane: db.Airplane,
+  City: db.City, 
+  Airport:db.Airport,
+  Flight:db.Flight
+ 
+};

@@ -9,4 +9,5 @@ app.use(express.urlencoded(
 app.use('/api', apiRoutes);
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`);
+    const {City,Airport}=require('./models')
 });
