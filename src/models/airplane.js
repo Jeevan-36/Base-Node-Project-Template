@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id',
         onDelete:'CASCADE'
       });
+      this.hasMany(models.Seat,{
+        foreignKey: 'id',
+        onDelete:'CASCADE'
+      })
       
     }
   }

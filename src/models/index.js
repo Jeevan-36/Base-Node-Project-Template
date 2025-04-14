@@ -46,6 +46,6 @@ module.exports = {
   Airplane: db.Airplane,
   City: db.City, 
   Airport:db.Airport,
-  Flight:db.Flight
- 
+  Flight:db.Flight,
+  Seat:db.Seat
 };
